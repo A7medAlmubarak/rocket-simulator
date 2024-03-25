@@ -3,13 +3,18 @@
 class Planet
 {
 public:
-	double M, R, G;
+	double M, R, G ,P0 , Md ,Tkelvin ;
 
-	Planet(double MM = 5.972e24, double RR = 6378000 ){
+	Planet(double MM = 5.972e24, double RR = 6378000,
+		   double P00 = 1.01325, double Mdd = 0.0289,
+		   double TTkelvin = 287 ){
 
 		G = 6.67428*1e-11 ;
-		M = MM ;
-		R = RR ;
+		M = MM ; // Kg
+		R = RR ; // m
+		P0 = P00; //1 bar = 100000 pa
+		Md = Mdd , //Kg/Mol
+		Tkelvin = TTkelvin; // Kelvin
 		
 	}
 
@@ -26,6 +31,8 @@ public:
 	
 		return dirfg*ifg;
 	}
+
+
 
 
 };

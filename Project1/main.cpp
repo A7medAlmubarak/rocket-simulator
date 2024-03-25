@@ -1,4 +1,12 @@
 #include "simulation.h"
+#include <fstream>
+
+//ifstream //read
+//ofstream //write
+//fstream // read + write
+
+
+double speed = 7000;
 
 int YSGL_init_Caller()
 {
@@ -14,7 +22,7 @@ int YSGL_init_Caller()
 
 	glEnable(GL_COLOR_MATERIAL);
 	
-	YSGL_init();
+	YSGL_init(speed);
 	return TRUE;
 }
 
@@ -69,9 +77,60 @@ int mainCode()
 	return (msg.wParam);
 }
 
-int main()
+
+string args[10];
+int argn;
+
+
+int main(int argc, char* argv[])
 {
-	cout << "YSGL start" << endl;
+
+	//	 #################################### GUI ################################################
+
+
+	
+
+	//cout << "name = " << "Omran" << " - " << "Alhomsi" << endl ;
+	argn = argc;
+	for (int i = 0; i < argc; i++){
+
+		args[i] = argv[i];
+		cout << "i = " << i << " - " << args[i] << endl ;
+
+	}
+
+	if (args[1] == "/Insert")
+	{
+
+		ofstream myfile;
+		myfile.open("myfile.txt");
+
+		for (int i = 2; i < argc; i++)
+		{
+
+			myfile << args[i] << " - ";
+			
+			cout << i << " === " << args[i] << endl;
+
+			if (i == 2)
+			{
+				speed = atof(args[i].c_str());
+			}
+
+		}
+
+		myfile.close();
+
+		cout << "___FINSH___" << endl;
+
+
+	}
+
+
+//		 #################################### End GUI ############################################
+
+
+	cout << "Omran Start" << endl;
 	return mainCode();
 
 }
